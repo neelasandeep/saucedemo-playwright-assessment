@@ -32,7 +32,7 @@ The seven cases cover valid and rejected sign-in, ascending-price sorting, add/r
 
 ## Test Accounts and Data
 
-The suite uses SauceDemo's public demo credentials (`standard_user` / `secret_sauce` and `locked_out_user` / `secret_sauce`) and synthetic checkout values. These are demo credentials, not application secrets. No real payment or personal data is entered.
+The suite uses SauceDemo's public demo credentials (`standard_user` / `secret_sauce` and `locked_out_user` / `secret_sauce`) and Faker-generated synthetic checkout values. These are demo credentials, not application secrets. No real payment or personal data is entered.
 
 ## CI
 
@@ -45,5 +45,3 @@ GitHub Actions runs type checking and the Chromium suite on pushes and pull requ
 - Run both cases successfully during the recording and explain the assertions.
 - Upload the video to an accessible platform and verify it opens without special permissions.
 - Add the public repository URL and video URL to the assessment submission form.
-
-See [the video walkthrough guide](docs/video-guide.md) for a recording outline and final checks.

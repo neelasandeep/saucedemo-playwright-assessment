@@ -5,7 +5,7 @@
 - Open `https://www.saucedemo.com/` in a fresh browser context for each case.
 - Standard account: `standard_user` / `secret_sauce`.
 - Locked account: `locked_out_user` / `secret_sauce`.
-- Checkout data: Jordan / QA / 10001 (synthetic data).
+- Checkout data: generated per run with Faker (synthetic first name, last name, and five-digit postal code).
 - The tests use no real customer or payment information.
 
 ## Cases
@@ -63,8 +63,8 @@
 
 - **Priority:** P1
 - **Preconditions:** Signed in as the standard user with Sauce Labs Backpack in the cart.
-- **Steps:** Open the cart, select Checkout, enter valid first name, last name, and postal code, select Continue, review the order, then select Finish.
-- **Expected:** The overview includes Sauce Labs Backpack, checkout completes, and the success page displays `Thank you for your order!`.
+- **Steps:** Read the selected product name and displayed price from inventory, add it to the cart, compare the price in the cart, enter valid customer information, then compare the product name and price once in the order overview. Read the displayed subtotal, tax, total, and shipping information before finishing the order.
+- **Expected:** The cart price and overview price match the captured inventory price; the overview product name matches the captured name; the subtotal matches the captured item price; shipping is free; and the displayed total equals the displayed subtotal plus tax. Checkout completes and displays `Thank you for your order!`.
 - **Automation:** `tests/checkout.spec.ts`
 - **Live coding case:** Yes
 

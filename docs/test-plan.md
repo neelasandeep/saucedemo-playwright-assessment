@@ -32,7 +32,7 @@ Assess the core customer shopping journey on SauceDemo using browser-based UI au
 
 ## Test Design and Strategy
 
-Tests are organized by authentication, inventory/cart, and checkout. Each test starts from an isolated browser context and establishes its own UI state. Shared helpers cover only stable, repeated setup (sign-in and adding the selected item); business assertions remain in each test.
+Tests are organized by authentication, inventory/cart, and checkout. Each test starts from an isolated browser context and establishes its own UI state. Shared helpers capture product data during setup, while focused cart and checkout page objects encapsulate interactions and repeated assertions. Test names and page-object method calls keep each scenario readable as a business flow.
 
 Playwright role/name locators are preferred because they reflect user-facing controls and improve resilience to layout changes. SauceDemo does not expose a test ID for every control, so the inventory card is scoped by its product link and the site's `data-test` attributes are used for validation messages. Assertions check observable user outcomes rather than implementation details.
 
