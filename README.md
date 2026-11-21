@@ -11,20 +11,56 @@ Senior QA Engineer assessment project: browser automation for the SauceDemo shop
 ## Setup
 
 ```bash
-npm install
+npm ci
 npx playwright install chromium
 ```
 
-## Run
+## Run Tests
 
 ```bash
 npm test
 npm run typecheck
 ```
 
-Run with a visible browser using `npm run test:headed`, or use the interactive runner with `npm run test:ui`. To target a different compatible environment, set `BASE_URL` before running the suite.
+Run only the checkout cases:
 
-The HTML report is written to `playwright-report/` and can be opened with `npm run test:report`. Traces, screenshots, and videos are retained on test failure under `test-results/`.
+```bash
+npm test -- tests/checkout.spec.ts
+```
+
+Run the checkout cases in a visible browser:
+
+```bash
+npm run test:headed -- tests/checkout.spec.ts --workers=1
+```
+
+For a recording, add a delay between browser actions. This also raises the per-test timeout to two minutes while `PW_SLOW_MO` is set:
+
+```bash
+PW_SLOW_MO=700 npm test -- tests/checkout.spec.ts --headed --workers=1
+```
+
+Use the Playwright interactive runner with:
+
+```bash
+npm run test:ui
+```
+
+To target a different compatible environment, set `BASE_URL` before the test command. For example:
+
+```bash
+BASE_URL=https://www.saucedemo.com npm test
+```
+
+## Reports and Failure Artifacts
+
+The HTML report is generated in `playwright-report/`. Open it with:
+
+```bash
+npm run test:report
+```
+
+Traces, screenshots, and videos are retained for failed tests under `test-results/`.
 
 ## Coverage
 
